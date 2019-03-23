@@ -20,7 +20,14 @@ int main() {
 
 		for (int i1 = 1; i1 <= i; i1++) {
 			for (int i2 = 1; i + 1 + i2 < l;i2++) {
-				dp[i1][i2] = max(max(dp[i1 - 1][i2], dp[i1][i2 - 1]), dp[i1 - 1][i2 - 1] + (str[i1] == str[i + 1 + i2] ? 1 : 0)); 
+				if (str[i1] == str[i + 1 + i2]) {
+					dp[i1][i2] = dp[i1 - 1][i2 - 1] + 1;
+				}
+				else {
+					dp[i1][i2] = max(dp[i1 - 1][i2], dp[i1][i2 - 1]);
+				}
+				//dp[i1][i2] = max(dp[i1][i2 - 1], dp[i1 - 1][i2 - 1] + (str[i1] == str[i + 1 + i2] ? 1 : 0));
+				//dp[i1][i2] = max(max(dp[i1 - 1][i2], dp[i1][i2 - 1]), dp[i1 - 1][i2 - 1] + (str[i1] == str[i + 1 + i2] ? 1 : 0)); 
 				//dp[i1][i2] = max(max(dp[i1 - 1][i2], dp[i1][i2 - 1]), dp[i1 - 1][i2 - 1] + str[i1] == str[i + 1 + i2] ? 1 : 0); »áÓÐbug 
 			}
 		}
